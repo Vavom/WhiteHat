@@ -15,4 +15,16 @@ describe('Family Tree', function (){
         const mum = familyTree[0].parents[0]
         expect(mum.name).toEqual('Mum')
     })
+
+    test('All people have names', function() {
+        familyTree.map(a => expect(a.name).toBeDefined())
+        familyTree.map(a => expect(a.name).not.toBeNull())
+        familyTree.map(a => expect(a.name).not.toBe(Number))
+
+
+    })
+
+    test('All ages are above -1', function() {
+        familyTree.map(a => expect(a.age).toBeGreaterThan(-1))
+    })
 })
