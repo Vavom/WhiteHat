@@ -12,7 +12,7 @@ describe('Family Tree', function (){
     })
 
     test('My mum is in the tree', function() {
-        const mum = me.parents[0]
+        const mum = familyTree[0].parents[0]
         expect(mum.name).toEqual('Mum')
     })
 })
