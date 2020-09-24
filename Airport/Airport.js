@@ -1,20 +1,9 @@
-
-class Security {
-    constructor(xray, metalDetector, noStaff) {
-        this.xray = xray
-        this.metalDetector = metalDetector
-        this.noStaff = noStaff
-    }
-    addStaff(noEmployees) {
-        this.noStaff += noEmployees
-    }
-}
-
 class Aeroplane {
     constructor() {
         this.fuelAmount = 0
         this.isCabinReady = false
         this.isMaintenanceCheckComplete = false
+        this.passengers = []
     }
     fueling(fuelAmount) {
         this.fuelAmount += fuelAmount
@@ -27,12 +16,52 @@ class Aeroplane {
     maintenanceCheckComplete(isMaintenanceCheckComplete) {
         this.isMaintenanceCheckComplete = isMaintenanceCheckComplete
     }
+    assignPassengers(passengers) {
+        this.passengers.push(passengers) 
+    }
 }
 
 class Airport {
-    constructor({security}, noStaff) {
-        this.security = security
-        this.noStaff = noStaff
+    static airports = []
+    planes = []
+    constructor(name) {
+        this.name = name
+        this.constructor.airports.push(this)
+    }
+    addPlane(plane) {
+    this.planes.push(plane) 
+    plane.location = this.name
+    }
+
+    takeOff(plane, destination) {
+        const index = this.planes.indexOf(plane)
+        this.planes.splice(index, 1)
+        this.landing(plane, destination)
+
+
+    }
+    landing(plane, arrival) {
+        arrival.planes.push(plane)
+        plane.location = arrival.name
+
+    }
+}
+
+class Plane {
+    static planes = []
+    constructor() {
+        this.passengers = []
+        this.location = undefined
+        this.constructor.planes.push(this)
+    }
+    board(passengers) {
+        this.passengers = passengers
+    }
+    setDestination(destination) {
+        this.destination = destination
+    }
+    setLocation(location) {
+        this.location = location
     }
 }
 
@@ -53,4 +82,5 @@ class Bag {
     }
 }
 
-module.exports = {Passenger, Bag, Airport, Security, Aeroplane}
+
+module.exports = {Plane, Passenger, Bag, Airport, Aeroplane}

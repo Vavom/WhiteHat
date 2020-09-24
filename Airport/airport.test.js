@@ -1,4 +1,5 @@
 
+const { Plane } = require('./Airport')
 const Airport = require('./Airport')
 
 describe('Passenger', function () {
@@ -32,38 +33,48 @@ describe('Passenger', function () {
 })
 
 describe('Airport', () => {
-    const security = new Airport.Security(2, 4, 2);
-    const airport = new Airport.Airport(security, 230)
-    test('enough employes available', () => {
-        const enoughStaff = security.noStaff < airport.noStaff;
-        expect(enoughStaff).toBeTruthy()
+    const LAX = new Airport.Airport('LAX')
+    const TLV = new Airport.Airport('TLV')
+    const LHR = new Airport.Airport('LHR')
+    const CDG = new Airport.Airport('CDG')
+
+    test('has a name', () => {
+        expect(LHR.name).toBe('LHR')
     })
-    describe('Security', () => {
-        test('has at least 2 x-ray machines', () => {
-            expect(security.xray).toBeGreaterThan(1)
-        })
-        test('has at least 4 metal detectors', () => {
-            expect(security.metalDetector).toBeGreaterThan(3)
-        })
-        test('has at least 15 staff', () => {
-            security.addStaff(20)
-            expect(security.noStaff).toBeGreaterThan(14) 
-        })
+
+    test('each airport knows about all the others', () => {
+        expect(Airport.Airport.airports).toBeTruthy()
+        expect(Airport.Airport.airports.length).toBe(4)
     })
-    describe('aeroplane', () => {
-        const aeroplane = new Airport.Aeroplane()
-        test('has fuel loaded', () => {
-            aeroplane.fueling(160000)
-            expect(aeroplane.fuelAmount).toBeGreaterThan(100000)
-        })
-        test('is cabin ready', () => {
-            aeroplane.cabinReady(true)
-            expect(aeroplane.isCabinReady).toBeTruthy()
-        })
-        test('has the aircraft been check by maintance crew', () => {
-            aeroplane.maintenanceCheckComplete(true)
-            expect(aeroplane.isMaintenanceCheckComplete).toBeTruthy()
-        })
+
+    test('an Airport has planes', () => {
+        const ElAl = new Plane()
+        ElAl.setLocation(TLV)
+
+        const BritishAirways = new Plane()
+        const AirFrance = new Plane()
+        const USAirways = new Plane()
+
+        LHR.addPlane(BritishAirways)
+        TLV.addPlane(ElAl)
+        LAX.addPlane(USAirways)
+        CDG.addPlane(AirFrance)
+        expect(BritishAirways.location).toBe('LHR')
+        LHR.takeOff(BritishAirways, LAX)
+        expect(LHR.planes.length).toBe(0)
+        expect(LAX.planes.length).toBe(2)
+        expect(BritishAirways.location).toBe("LAX")
+        LAX.takeOff(BritishAirways, TLV)
+        expect(LHR.planes.length).toBe(0)
+        expect(TLV.planes.length).toBe(2)
+        expect(LAX.planes.length).toBe(1)
+        expect(BritishAirways.location).toBe("TLV")
+
+        
+
+
     })
 })
 
+
+console.log(Airport.Airport.airports)
