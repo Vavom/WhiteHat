@@ -70,9 +70,32 @@ describe('Airport', () => {
         expect(LAX.planes.length).toBe(1)
         expect(BritishAirways.location).toBe("TLV")
 
+    })
+    test('have extra data we can get with await', async () => {
+        const LHR = new Airport.Airport('LHR')
+        const info = await LHR.getInfoAwait()
+        expect(info.city).toBe('London')
+    })
+
+    test('have extra data we can get with promise', async () => {
+        const LHR = new Airport.Airport('LHR')
+        LHR.getInfoAwait()
+        .then(info => {
+            expect(info.city).toEqual('London')
+        })
+        .catch(err => {
+            expect(err).toBeNull()
+        })
+    })
+    
+    test('have extra data we can get with callback', (done) => {
+        const LHR = new Airport.Airport('LHR')
+        const onInfo = (err, info) => {
+            expect(info.city).toBe('London')
+            done()
+        }
+        LHR.getInfo(onInfo)
         
-
-
     })
 })
 

@@ -21,6 +21,9 @@ class Aeroplane {
     }
 }
 
+const fs = require('fs')
+const path = require('path')
+
 class Airport {
     static airports = []
     planes = []
@@ -44,6 +47,34 @@ class Airport {
         arrival.planes.push(plane)
         plane.location = arrival.name
 
+    }
+    getInfo(onInfo) {
+        const airportName = this.name
+        const locationOfFile = path.join(__dirname, 'airports.json')
+        const callback = function (err, buffer) {
+            const data = JSON.parse(String(buffer))
+            const arrayOfAirports = Object.keys(data).map(key => {
+                return data[key]
+            })
+            const info = arrayOfAirports.find(airport => airport.iata === airportName)
+            onInfo(err, info)
+        }
+        fs.readFile(locationOfFile, callback)
+    }
+
+    getInfoAwait() {
+        const airportName = this.name
+        return new Promise(function (resolve, reject) {
+            fs.readFile(path.join(__dirname, 'airports.json'), (err, buffer) => {
+                if(err) return reject(err)
+            const data = JSON.parse(String(buffer))
+            const arrayOfAirports = Object.keys(data).map(key => {
+                return data[key]
+            })
+            const result = arrayOfAirports.find(airport => airport.iata === airportName)
+            resolve(result)
+            })
+        })
     }
 }
 
