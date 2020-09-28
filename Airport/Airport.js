@@ -62,7 +62,7 @@ class Airport {
         fs.readFile(locationOfFile, callback)
     }
 
-    getInfoAwait() {
+    getInfoAwait() {         
         const airportName = this.name
         return new Promise(function (resolve, reject) {
             fs.readFile(path.join(__dirname, 'airports.json'), (err, buffer) => {

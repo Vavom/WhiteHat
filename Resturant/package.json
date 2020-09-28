@@ -1,0 +1,16 @@
+{
+  "name": "resturant",
+  "version": "1.0.0",
+  "main": "Restaurant.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "test:coverage": "jest --coverage=true"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "coverage": "^0.4.1",
+    "jest": "^26.4.2"
+  }
+}

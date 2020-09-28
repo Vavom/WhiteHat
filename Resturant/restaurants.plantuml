@@ -1,0 +1,42 @@
+@startuml
+class Resturant {
+    name STRING
+    image STRING
+    menus Array <items>
+    Bookings Array <Bookings>
+    seated()
+    getMenu()
+
+}
+class Menu {
+    title STRING
+    items Array <image>
+    itemNotAvailable()
+}
+class Item {
+    name STRING
+    price FLOAT
+}
+class Booking {
+    name STRING
+    date STRING
+    time STRING
+    noPeople INTERGER
+}
+Class staffOnTeam {
+    nameOfTeam STRING
+    noOfStaff INTERGER
+    names Array <staffMembers>
+}
+class Employee {
+    name STRING
+    team STRING
+}
+
+Resturant--{Menu
+Resturant--{Booking
+Resturant--{staffOnTeam
+Menu--{Item
+staffOnTeam--{Employee
+@enduml
+

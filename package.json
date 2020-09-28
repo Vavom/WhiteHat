@@ -1,0 +1,22 @@
+{
+  "name": "whitehat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vavom/WhiteHat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vavom/WhiteHat/issues"
+  },
+  "homepage": "https://github.com/Vavom/WhiteHat#readme",
+  "dependencies": {
+    "jest": "^26.4.2"
+  }
+}
