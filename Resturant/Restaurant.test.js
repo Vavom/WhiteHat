@@ -49,7 +49,7 @@ describe('Menu', () => {
     test('item can be made unavailable', () => {
         Chicken.available = false
         Lunch.removeUnavailableItems
-        console.log(Lunch)
+        
     })
 
 })

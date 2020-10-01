@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Bayroot",
+        "image": "https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg"
+    },
+    {
+        "id": 2,
+        "name": "The Berkley",
+        "image": "https://www.the-berkeley.co.uk/siteassets/restaurants--bars/the-garden-at-the-berkeley/the-garden-at-the-berkeley-teaser.jpg?w=620&h=560&scale=both&mode=crop"
+    }
+]
