@@ -1,0 +1,21 @@
+<div class="topnav">
+        <a href="/home">Restaurants</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="/about">About</a>
+      </div>
+<main>
+    <div class="contents">
+            {{#each menus}}
+                <div class="card">
+                    <header class="card-header">{{this.name}}</header>
+                    <menus class="card-details">
+                        {{#each items}}
+                        {{this.name}}
+                        {{this.price}}
+                        {{/each}}
+                        </menus>
+                </div>
+            {{/each}}
+    </div>
+</main>
