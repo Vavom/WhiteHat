@@ -2,9 +2,58 @@
 <html>
     <head>
         <link rel="stylesheet" href="/style.css"/>
+        <script type='text/javascript'>
+        function addFields(){
+            // Number of inputs to create
+            var number = 1
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+                // Append a node with a random text\
+
+                let div = document.createElement("div")
+                div.className="editItem-container"
+
+                let li = document.createElement("li")
+
+                var label = document.createElement("label");
+                var name = document.createTextNode("Item Name")
+                label.appendChild(name)
+                li.appendChild(label);
+
+                // Create an <input> element, set its type and name attributes
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "name";
+                input.className = "field-long";
+                input.placeholder = "Item Name"
+
+                li.appendChild(input);
+                div.appendChild(li)
+
+                li = document.createElement("li")
+                var label = document.createElement("label");
+                var name = document.createTextNode("Price")
+                label.appendChild(name)
+                li.appendChild(label);
+
+                
+                var priceInput = document.createElement("input");
+                priceInput.type = "number";
+                priceInput.name = "price";
+                priceInput.step = "any"
+                priceInput.className = "field-long";
+                priceInput.placeholder="0"
+                li.appendChild(priceInput);
+                div.appendChild(li)
+                // Append a line break 
+                container.appendChild(div)
+        }
+        </script>
     </head>
-        <div class="date">{{date}}</div>
+
     <body>
+
         {{{body}}}
     </body>
     

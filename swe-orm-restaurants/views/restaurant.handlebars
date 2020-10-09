@@ -1,0 +1,45 @@
+
+<main>
+    
+    <div class="contents">
+        
+        <div class="topnav">
+            <div class="delete-container">
+            <a href="/restaurants/{{restaurant.id}}/delete" class="button">Delete</a>         
+        </div>
+        <a class="topnav-button" href="/home">Restaurants</a>
+        <a class="topnav-button" href="/form">Form</a>
+        <a class="topnav-button" href="#contact">Contact</a>
+        <a class="topnav-button" href="/about">About</a>
+        <div class="delete-container">
+            <a href="/restaurants/{{restaurant.id}}/edit" class="button"> Edit Restaurant </a>
+        </div>
+        
+        
+      </div>
+        
+            {{#each menus}}
+                <div class="menu">
+                    <header class="menu-header">{{this.title}}</header>
+                    <menus class="menu-details">
+                        {{#each items}}
+                        <div class="menu-item">{{this.name}}</div>
+                        <div class="menu-item-price">${{this.price}}</div>
+                        {{/each}}
+                        </menus>
+                    <div class="delete-container">
+                        <a href="/restaurants/{{../restaurant.id}}/{{this.id}}/editMenu" class="button">Edit Menus</a>
+                    </div>
+                </div>
+            {{/each}}
+            <div class="menu">
+                <a href="/restaurants/{{restaurant.id}}/addMenu" 
+                style=
+                "font-size:50px;
+                 transform: translateY(270px);
+                 font-weight: bold;
+                 justify-content; space-between;
+                "class="button"> Add Menu </a>
+            </div>
+    </div>
+</main>

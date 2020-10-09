@@ -1,0 +1,50 @@
+<main>
+    <div class="contents">
+        <div class="topnav">
+            
+            <a class="topnav-button" href="/home">Restaurants</a>
+            <a class="topnav-button" href="/form">Form</a>
+            <a class="topnav-button" href="#contact">Contact</a>
+            <a class="topnav-button" href="/about">About</a>
+            </div>
+            <div>
+            <form class="menu" action="/restaurants/{{restaurant.id}}/edit/{{menus.id}}" method="POST">
+                <ul class="form-style-1">
+                    <li><label>Menu Name<span class="required">*</span></label><input type="text" name="title" class="field-divided" value="{{menus.title}}" /></li>
+                    {{#each items}}
+                    <div class="editItem-container">
+                        <li>
+                            <label>Item Name<span class="required">*</span></label>
+                            <input type="text" name="name" class="field-long" value="{{this.name}}">
+                        </li>
+
+                        <li>
+                            <label>Price<span class="required">*</span></label>
+                            <input type="number" name="price" class="field-long" step="any" value="{{this.price}}">
+                        </li>
+                    </div>
+                    {{/each}}
+                    {{!-- <li>
+                        <label>Subject</label>
+                        <select name="field4" class="field-select">
+                        <option value="Advertise">Advertise</option>
+                        <option value="Partnership">Partnership</option>
+                        <option value="General Question">General</option>
+                        </select>
+                    </li> --}}
+                    {{!-- <li>
+                        <label>Your Message <span class="required">*</span></label>
+                        <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                    </li> --}}
+                    <li>
+                        <button class="button">Submit Changes</button>
+                    </li>
+                </ul>
+                <div class="delete-container">
+                <a href="/restaurants/{{restaurant.id}}/{{menus.id}}/delete" class="button">Delete</a>         
+                </div>
+            </form>
+            
+
+    </div>
+</main>

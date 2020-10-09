@@ -1,18 +1,20 @@
-<div class="topnav">
-        <a class="active" href="/home">Restaurants</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="/about">About</a>
-      </div>
+
 <main>
-    <div class="header">Welcome To The Greatest Restaurants In The World</div>
     <div class="contents">
+        <div class="topnav">
+        <a class="topnav-button-active" href="/home">Restaurants</a>
+        <a class="topnav-button" href="/form">Form</a>
+        <a class="topnav-button" href="/about">About</a>
+      </div>
             {{#each restaurants}}
-            <a href={{this.name}}>
-                <div class="card" id="clickable">
+            <a href="/restaurants/{{this.id}}">
+                <div class="card" style="background-image: url({{this.image}})">
                     <header class="card-header">{{this.name}}</header>
-                    <menus class="card-details">{{this.menus.length}} menus</menus>
-                    <img class="images" src={{this.image}}>
+                    <div class="card-details-wrapper">
+                    {{#each this.menus}}
+                    <menus class="card-details">{{this.title}}</menus>
+                    {{/each}}
+                    </div>
                 </div>
             </a>
             {{/each}}

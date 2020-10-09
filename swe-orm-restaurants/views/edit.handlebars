@@ -1,0 +1,26 @@
+<main>
+    <div class="contents">
+        <div class="topnav">
+            <a class="topnav-button" href="/home">Restaurants</a>
+            <a class="topnav-button" href="/form">Form</a>
+            <a class="topnav-button" href="#contact">Contact</a>
+            <a class="topnav-button" href="/about">About</a>
+
+        </div>
+        <div>
+            <form class="menu" action="/restaurants/{{restaurant.id}}/edit" method="POST">
+                <ul class="form-style-1">
+                    <li><label>Restaurant Name <span class="required">*</span></label><input type="text" name="name" class="field-divided" value="{{restaurant.name}}" /></li>
+                    <li>
+                        <label>Image Link<span class="required">*</span></label>
+                        <input type="url" name="image" class="field-long" value="{{restaurant.image}}">
+                    </li>
+
+                    <li>
+                        <button class="button">Submit</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</main>
